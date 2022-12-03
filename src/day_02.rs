@@ -1,5 +1,3 @@
-use std::fs::read_to_string;
-
 fn calculate_a_score_of_one_round_part_01(round: &str) -> usize {
     match round {
         "A X" => 4,
@@ -31,17 +29,15 @@ fn calculate_a_score_of_one_round_part_02(round: &str) -> usize {
 }
 
 pub fn day_02() -> (usize, usize) {
-    let rounds = read_to_string("day_02.txt").unwrap();
+    let rounds = include_str!("day_02.txt");
 
     let part_01 = rounds
-        .split('\n')
-        .filter(|r| !r.is_empty())
+        .lines()
         .map(|r| calculate_a_score_of_one_round_part_01(r))
         .sum();
 
     let part_02 = rounds
-        .split('\n')
-        .filter(|r| !r.is_empty())
+        .lines()
         .map(|r| calculate_a_score_of_one_round_part_02(r))
         .sum();
 
