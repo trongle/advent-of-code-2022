@@ -1,6 +1,6 @@
 use std::{error::Error, fs::read_to_string};
 
-pub fn day01() -> Result<(u32, u32), Box<dyn Error>> {
+pub fn day_01() -> Result<(u32, u32), Box<dyn Error>> {
     let input = read_to_string("day_01.txt").unwrap();
     let mut calories_by_elf = vec![];
     let mut total_calories = 0;

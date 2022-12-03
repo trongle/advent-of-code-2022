@@ -1,12 +1,12 @@
 mod day_01;
 mod day_02;
 
-use crate::day_01::day01;
+use crate::day_01::day_01;
 use crate::day_02::day_02;
 use std::error::Error;
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let (day_01_part_01, day_01_part_02) = day01()?;
+    let (day_01_part_01, day_01_part_02) = day_01()?;
 
     println!("{}, {}", day_01_part_01, day_01_part_02);
 
