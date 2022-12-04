@@ -24,7 +24,7 @@ pub fn _day_01_bak() -> Result<(u32, u32), Box<dyn Error>> {
     Ok((part_01, part_02))
 }
 
-// This version uses Collection and Iterator 
+// This version uses Collection and Iterator
 // so it takes fewer variables than the previous
 // one. Consequently, mre concise and readable.
 pub fn day_01() -> Result<(u32, u32), Box<dyn Error + 'static>> {
