@@ -1,5 +1,5 @@
 pub fn day_03() {
-    let part_01_result: usize = include_str!("day_03.txt")
+    let part_1: usize = include_str!("day_03.txt")
         .lines()
         .into_iter()
         .map(|line| {
@@ -14,13 +14,13 @@ pub fn day_03() {
         .sum();
 
     let lines: Vec<&str> = include_str!("day_03.txt").lines().collect();
-    let mut part_02_result: usize = 0;
+    let mut part_2: usize = 0;
     for i in (0..lines.len()).step_by(3) {
         let common = find_common(lines[i], lines[i + 1], Some(lines[i + 2]));
-        part_02_result += get_priority(common.unwrap().to_string().as_bytes()) as usize;
+        part_2 += get_priority(common.unwrap().to_string().as_bytes()) as usize;
     }
 
-    println!("{}, {}", part_01_result, part_02_result);
+    println!("{}, {}", part_1, part_2);
 }
 
 fn break_rusksack(rusksack: &str) -> (&str, &str) {

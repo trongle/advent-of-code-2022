@@ -28,20 +28,20 @@ fn calculate_a_score_of_one_round_part_02(round: &str) -> usize {
     }
 }
 
-pub fn day_02() -> (usize, usize) {
+pub fn day_02() {
     let rounds = include_str!("day_02.txt");
 
-    let part_01 = rounds
+    let part_1: usize = rounds
         .lines()
         .map(|r| calculate_a_score_of_one_round_part_01(r))
         .sum();
 
-    let part_02 = rounds
+    let part_2: usize = rounds
         .lines()
         .map(|r| calculate_a_score_of_one_round_part_02(r))
         .sum();
 
-    (part_01, part_02)
+    println!("{}, {}", part_1, part_2);
 }
 
 #[cfg(test)]
