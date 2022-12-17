@@ -16,7 +16,7 @@ pub fn day_05() {
     for (k, v) in stacks {
         println!("key: {}, value: {:?} ", k, v.borrow().last());
     }
-    
+
     println!("==============");
 
     // Part 2
