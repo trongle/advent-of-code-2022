@@ -10,18 +10,27 @@ pub fn day_07() {
         system.do_action(line);
     });
 
-    let result_1 = find(system.dir_stack.first().unwrap().as_ref().borrow().clone())
+    let root = system.dir_stack.first().unwrap().as_ref().borrow();
+    let result_1 = get_children(root.clone())
         .iter()
+        .filter(|d| d.get_size() <= 100000)
         .fold(0, |acc, dir| acc + dir.get_size());
 
-    println!("{}", result_1);
+    let directories = get_children(root.clone());
+    let mut directories = directories
+        .iter()
+        .filter(|d| d.get_size() >= 30000000 - (70000000 - root.get_size()))
+        .collect::<Vec<&Directory>>();
+    directories.sort_by(|a, b| a.get_size().partial_cmp(&b.get_size()).unwrap());
+    let result_2 = directories.first().unwrap().get_size();
+
+    println!("{}, {}", result_1, result_2);
 }
 
-fn find(dir: Directory) -> Vec<Directory> {
+fn get_children(dir: Directory) -> Vec<Directory> {
     let mut vec1 = dir
         .directories
         .iter()
-        .filter(|d| d.as_ref().borrow().get_size() <= 100000)
         .map(|d| d.as_ref().borrow().clone())
         .collect::<Vec<Directory>>();
 
@@ -29,7 +38,7 @@ fn find(dir: Directory) -> Vec<Directory> {
         .clone()
         .directories
         .iter()
-        .flat_map(|d| find(d.as_ref().borrow().clone()))
+        .flat_map(|d| get_children(d.as_ref().borrow().clone()))
         .collect::<Vec<Directory>>();
 
     vec1.append(&mut vec2);
